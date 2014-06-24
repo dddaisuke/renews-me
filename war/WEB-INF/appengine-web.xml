@@ -11,7 +11,12 @@
   <!-- Configure java.util.logging -->
   <system-properties>
     <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    <property name="wordnet.database.dir" value="dict"/>
   </system-properties>
+
+  <resource-files>
+    <include path="/dict/*" />
+  </resource-files>
 
   <!--
     HTTP Sessions are disabled by default. To enable HTTP sessions specify:
