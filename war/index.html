@@ -20,8 +20,19 @@
         <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
       </tr>
       <tr>
-        <td><a href="stemming">Stemming</a></td>
+        <td><a href="stemming?word=messages">Stemming</a></td>
+      </tr>
+      <tr>
+        <td><a href="text_stemming?text=Don't name a property key. This name is reserved for a special property used to store the Model key. Though it may work locally, a property named key will prevent deployment to App Engine.">Text Stemming</a></td>
       </tr>
     </table>
+
+    <form method="post" action="text_stemming">
+      <p>
+        <textarea name="text"></textarea>
+      </p>
+      <p>
+      <input type="submit" value="送信" /></p>
+    </form>
   </body>
 </html>
