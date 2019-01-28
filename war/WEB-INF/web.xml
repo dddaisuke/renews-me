@@ -1,27 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<servlet>
 		<servlet-name>Stemming</servlet-name>
 		<servlet-class>me.renews.StemmingServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>TextStemming</servlet-name>
-		<servlet-class>me.renews.TextStemmingServlet</servlet-class>
+		<servlet-name>ArticleExtractor</servlet-name>
+		<servlet-class>me.renews.ArticleExtractorServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Stemming</servlet-name>
 		<url-pattern>/stemming</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>ArticleExtractor</servlet-name>
+		<url-pattern>/article_extractor</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>LoadWordListServlet</servlet-name>
+		<servlet-class>me.renews.LoadWordListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoadWordListServlet</servlet-name>
+		<url-pattern>/load_word_list</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoadWordsServlet</servlet-name>
+		<servlet-class>me.renews.tasks.LoadWordsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoadWordsServlet</servlet-name>
+		<url-pattern>/tasks/load_words</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>PreLoadWordsServlet</servlet-name>
+		<servlet-class>me.renews.tasks.PreLoadWordsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PreLoadWordsServlet</servlet-name>
+		<url-pattern>/tasks/pre_load_words</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>PreLoadWords2Servlet</servlet-name>
+		<servlet-class>me.renews.tasks.PreLoadWords2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PreLoadWords2Servlet</servlet-name>
+		<url-pattern>/tasks/pre_load_words2</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CheckPageRankServlet</servlet-name>
+		<servlet-class>me.renews.tasks.CheckPageRankServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckPageRankServlet</servlet-name>
+		<url-pattern>/tasks/check_page_rank</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>TextStemming</servlet-name>
-		<url-pattern>/text_stemming</url-pattern>
+		<servlet-class>me.renews.tasks.TextStemmingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TextStemming</servlet-name>
+		<url-pattern>/tasks/text_stemming</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>admin</web-resource-name>
+			<url-pattern>/admin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>tasks</web-resource-name>
+			<url-pattern>/tasks/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
 </web-app>

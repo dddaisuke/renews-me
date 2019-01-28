@@ -1,0 +1,22 @@
+<queue-entries>
+	<!--Change the refresh rate of the default queue to 1/s -->
+	<queue>
+		<name>default</name>
+		<rate>1/s</rate>
+	</queue>
+	<queue>
+		<name>load-word-list-queue</name>
+		<rate>6/m</rate>
+		<bucket-size>40</bucket-size>
+	</queue>
+	<queue>
+		<name>check-page-rank-queue</name>
+		<rate>1/s</rate>
+		<bucket-size>40</bucket-size>
+	</queue>
+	<queue>
+		<name>text-stemming-queue</name>
+		<rate>6/m</rate>
+		<bucket-size>40</bucket-size>
+	</queue>
+</queue-entries>
